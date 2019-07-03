@@ -11,19 +11,14 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Calculator service.
+ */
 @Service
 public class CalculatorServiceImpl implements CalculatorService {
 
     @Autowired
     private CarrierRepository carrierRepository;
-
-
-
-
-
-
-
-
 
 
     public List<CarrierCostCalculationResponse> calculateCarrierCost(CarrierCostCalculationRequest request) {
@@ -43,6 +38,11 @@ public class CalculatorServiceImpl implements CalculatorService {
         return carrierCostCalculationResponses;
     }
 
+    /**
+     * Get all carrier list.
+     *
+     * @return the list
+     */
     public List<Carrier> getAllCarrier(){
         List<Carrier> carriers = (List<Carrier>) carrierRepository.findAll();
 

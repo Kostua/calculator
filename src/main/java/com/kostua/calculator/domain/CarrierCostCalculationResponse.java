@@ -2,8 +2,10 @@ package com.kostua.calculator.domain;
 
 import lombok.Data;
 
-import java.math.BigDecimal;
 
+/**
+ * The type Carrier cost calculation response.
+ */
 @Data
 public class CarrierCostCalculationResponse {
 

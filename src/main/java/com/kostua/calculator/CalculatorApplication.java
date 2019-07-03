@@ -9,13 +9,30 @@ import org.springframework.context.annotation.Bean;
 
 import java.math.BigDecimal;
 
+/**
+ * Entry point for run Spring Boot application
+ *
+ * @SpringBootApplication is a meta-annotation that pulls in component scanning, autoconfiguration, and property support.
+ */
 @SpringBootApplication
 public class CalculatorApplication {
 
+	/**
+	 * The entry point of application.
+	 *
+	 * @param args the input arguments
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(CalculatorApplication.class, args);
 	}
 
+	/**
+	 * Data loader command line runner.
+	 * Save in repository demo data of Carrier class
+	 *
+	 * @param carrierRepository the carrier repository
+	 * @return the command line runner
+	 */
 	@Bean
 	public CommandLineRunner dataLoader(CarrierRepository carrierRepository) {
 		return new CommandLineRunner() {

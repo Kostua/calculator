@@ -10,6 +10,17 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 
+/**
+ *Class represent carrier company with two category of delivery price
+ * for air and sea.
+ *
+ * @Data is a Lombok annotation to create all the getters, setters, equals, hash, and toString methods,
+ * based on the fields.
+ *
+ * @Entity is a JPA annotation to make this object ready for storage in a JPA-based data store.
+ *
+ */
+
 @Data
 @Entity
 @NoArgsConstructor
