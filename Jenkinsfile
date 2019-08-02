@@ -3,7 +3,7 @@ pipeline {
     stages {
 	stage("Compile") {
 		steps {
-			sh "mvn build"
+			sh "mvn compile"
 		}
 	}
 	stage("Unit test") {
