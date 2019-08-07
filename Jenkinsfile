@@ -1,7 +1,7 @@
 pipeline {
 	agent any
     triggers {
-        pollSCM('*/15 * * * *')
+        pollSCM('H/15 * * * *')
     }
 
 
@@ -15,8 +15,14 @@ pipeline {
 	    stage("Test") {
 		steps {
 			sh "mvn test"
-      }
-}
+     		 }
+ 		
+	   }
+	    stage("Package") {
+		steps {
+			sh "mvn package"
+		}
+	}
 
 }
 
