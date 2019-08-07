@@ -7,5 +7,12 @@ pipeline {
 		}
 	   
 	  }
+	    stage("Build") {
+		steps {
+			sh "sh ./mvnw clean install -DskipTests"
       }
+}
+
+}
+
 }
