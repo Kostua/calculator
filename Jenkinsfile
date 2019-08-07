@@ -1,11 +1,11 @@
 pipeline {
-    agent any
-    stages {
-	stage("Compile") {
+	agent any
+	stages {
+	    stage("Checkout") {
 		steps {
-			sh "mvn compile"
+			git url: 'https://github.com/Kostua/calculator.git'
 		}
-	}
 	   
-	}
+	  }
+      }
 }

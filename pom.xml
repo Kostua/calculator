@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.kostua</groupId>
 	<artifactId>calculator</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>calculator</name>
 	<description>Shipping Cost Calculator</description>
 
