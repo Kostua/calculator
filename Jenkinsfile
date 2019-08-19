@@ -4,7 +4,7 @@ pipeline {
         pollSCM('H/15 * * * *')
     }
     tools {
-        maven 'Maven 3.2.5'
+        maven 'Maven 3.5.4'
     }
 
 
