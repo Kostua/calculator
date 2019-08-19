@@ -12,17 +12,12 @@ pipeline {
 		}
 	   
 	  }
-	    stage("Test") {
+	    stage("Build") {
 		steps {
-			sh "./mvn test"
+			sh "mvn -B -DskipTests clean package"
      		 }
  		
 	   }
-	    stage("Package") {
-		steps {
-			sh "./mvn package"
-		}
-	}
 
 }
 
