@@ -25,11 +25,14 @@ pipeline {
 	   
 	  }
 	    stage('SonarQube analysis') {
+		   enviroment {
+			scannerHome = tool 'sonar_qube_scanner'
 		   steps { 
-			withSonarQubeEnv(installationName: "sonar")
-			sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar'
+			withSonarQubeEnv('sonar')
+			sh "${scannerHome}/bin/sonar-scanner"
 		}
 	}
+}
 	    stage("Build") {
 		steps {
 		  sh 'mvn -B -Dmaven.test.failure.ignore=true install' 
