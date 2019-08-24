@@ -25,9 +25,11 @@ pipeline {
 	   
 	  }
 	    stage('SonarQube analysis') {
-		withSonarQubeEnv(installationName: "sonar")
-		sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar'
+		   steps { 
+			withSonarQubeEnv(installationName: "sonar")
+			sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar'
 		}
+	}
 	    stage("Build") {
 		steps {
 		  sh 'mvn -B -Dmaven.test.failure.ignore=true install' 
