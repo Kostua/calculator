@@ -13,6 +13,7 @@ pipeline {
 	   
 	  }
 	    stage("Build") {
+                withEnv("PATH+MAVEN=${tool 'm3'}/bin]
 		steps {
 			sh "mvn -B -DskipTests clean package"
      		 }
