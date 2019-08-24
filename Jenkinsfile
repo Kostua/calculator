@@ -26,9 +26,15 @@ pipeline {
 	  }
 	    stage("Build") {
 		steps {
-		  sh 'mvn -B -Dmaven.test.skip=true clean package' 
+		  sh 'mvn -B -Dmaven.test.failure.ignore=true install' 
      		 }
+		post {
+		   success {
+			junit 'target/surefire-reports/**/*.xml'
+			}
+		}
 	   }
+
 
 
 }
