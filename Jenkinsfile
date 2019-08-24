@@ -6,6 +6,14 @@ pipeline {
 
 
 	stages {
+	    stage ('Initialize') {
+		steps {
+			sh '''
+			   echo "PATH = ${PATH}"
+			   echo "M2_HOME = ${M2_HOME}"
+			'''
+			}
+		}
 	    stage("Checkout") {
 		steps {
 			git url: 'https://github.com/Kostua/calculator.git'
@@ -17,6 +25,7 @@ pipeline {
 		   echo 'This is minimal pipeline.'
      		 }
 	   }
+
 
 }
 
