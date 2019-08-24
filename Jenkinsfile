@@ -22,7 +22,7 @@ pipeline {
 	  }
 	    stage("Build") {
 		steps {
-		   echo 'This is minimal pipeline.'
+		  sh 'mvn -B -Dmaven.test.skip=true clean package' 
      		 }
 	   }
 
