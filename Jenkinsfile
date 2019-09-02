@@ -1,5 +1,10 @@
 pipeline {
-	agent any
+	agent {
+		docker {
+			image 'maven:3-alpine'
+			arg '-v /root/.m2:/root/.m2'
+		}
+	}
 	tools {
 		maven 'maven 3.5.4'
 		jdk 'java_11'
@@ -32,12 +37,6 @@ pipeline {
 		}
 	}
 
-	agent {
-		docker {
-			image 'maven:3-alpine'
-			arg '-v /root/.m2:/root/.m2'
-		}
-	}
 	    stage("Build") {
 		steps {
 		  sh 'mvn -B -Dmaven.test.failure.ignore=true install' 
