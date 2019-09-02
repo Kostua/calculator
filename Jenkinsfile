@@ -32,6 +32,12 @@ pipeline {
 		}
 	}
 
+	agent {
+		docker {
+			image 'maven:3-alpine'
+			arg '-v /root/.m2:/root/.m2'
+		}
+	}
 	    stage("Build") {
 		steps {
 		  sh 'mvn -B -Dmaven.test.failure.ignore=true install' 
