@@ -1,7 +1,7 @@
 pipeline {
 	tools {
 		maven 'maven 3.5.4'
-		jdk 'jdk_11'
+		jdk 'java_11'
 		}
 	agent {
 		docker {
