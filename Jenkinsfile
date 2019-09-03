@@ -3,12 +3,7 @@ pipeline {
 		maven 'maven 3.5.4'
 		jdk 'java_11'
 		}
-	agent {
-		docker {
-			image 'maven:3-alpine'
-			args '-v /root/.m2:/root/.m2'
-		}
-	}
+	agent any
     triggers {
         pollSCM('H/15 * * * *')
     }
