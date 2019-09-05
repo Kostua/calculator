@@ -52,8 +52,7 @@ pipeline {
 			   echo 'Start to build docker image'
 
 			   script {
-				   def customImage = docker.build("calculator:${env.BUILD_ID}")
-				   customImage.push()
+				   docker.build registry + ("calculator:${env.BUILD_ID}")
 			   }
 		   }
 	   }
