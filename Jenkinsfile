@@ -5,7 +5,7 @@ pipeline {
 		}
     environment {
     registry = "kostua/calculator"
-    registryCredential = ‘dockerhub’
+    registryCredential = 'dockerhub'
 		}
 	agent any
     triggers {
