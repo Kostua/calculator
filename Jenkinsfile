@@ -45,7 +45,12 @@ pipeline {
 
 	   stage("Docker build"){
 		   steps {
-			   sh "docker build -t kostua/calculator ."
+			   echo 'Start to build docker image'
+
+			   script {
+				   def customImage = docker.build("calculator:${env.BUILD_ID}")
+				   customImage.push()
+			   }
 		   }
 	   }
 
