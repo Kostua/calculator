@@ -52,12 +52,25 @@ pipeline {
 			   echo 'Start to build docker image'
 
 			   script {
-				   docker.build registry + ("calculator:${env.BUILD_ID}")
+				   docker.build registry + ":BUILD_NUMBER" 
 			   }
 		   }
 	   }
 
-
+	   stage('Deploy Image'){
+		   steps{
+			   script{
+				   docker.withRegistry( '', registryCredential) {
+					   dockerImage.push()
+				   }
+			   }
+		   }
+	   }
+	   stage('Remove Unused docker image'){
+		   steps{
+			   sh "docker rmi $registry:$BUILD_NUMBER"
+		   }
+	   }
 
 }
 
