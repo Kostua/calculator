@@ -3,6 +3,10 @@ pipeline {
 		maven 'maven 3.5.4'
 		jdk 'java_11'
 		}
+    environment {
+    registry = "docker_hub_account/repository_name"
+    registryCredential = ‘dockerhub’
+		}
 	agent any
     triggers {
         pollSCM('H/15 * * * *')
