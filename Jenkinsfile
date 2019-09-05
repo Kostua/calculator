@@ -45,7 +45,7 @@ pipeline {
 
 	   stage("Docker build"){
 		   steps {
-			   sh "docker build -t kostua/calculator"
+			   sh "docker build -t kostua/calculator ."
 		   }
 	   }
 
