@@ -7,7 +7,7 @@ pipeline {
     registry = "kostua/calculator"
     registryCredential = 'dockerhub'
 	dockerImage = ''
-		}
+	}
 	agent any
     triggers {
         pollSCM('H/15 * * * *')
@@ -53,7 +53,7 @@ pipeline {
 			   echo 'Start to build docker image'
 
 			   script {
-				   docker.build registry + ":BUILD_NUMBER" 
+				dockerImage  = docker.build registry + ":BUILD_NUMBER" 
 			   }
 		   }
 	   }
@@ -61,7 +61,7 @@ pipeline {
 	   stage('Deploy Image'){
 		   steps{
 			   script{
-				   docker.withRegistry( 'https://registry.hub.docker.com', registryCredential) {
+				   docker.withRegistry( '', registryCredential) {
 					   dockerImage.push()
 				   }
 			   }
