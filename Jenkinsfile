@@ -53,7 +53,7 @@ pipeline {
 			   echo 'Start to build docker image'
 
 			   script {
-				dockerImage  = docker.build registry + ":BUILD_NUMBER" 
+				dockerImage  = docker.build registry + ":$BUILD_NUMBER" 
 			   }
 		   }
 	   }
