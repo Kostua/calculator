@@ -6,6 +6,7 @@ pipeline {
     environment {
     registry = "kostua/calculator"
     registryCredential = 'dockerhub'
+	dockerImage = ''
 		}
 	agent any
     triggers {
@@ -61,10 +62,11 @@ pipeline {
 		   steps{
 			   script{
 				   docker.withRegistry( '', registryCredential) {
-					   image.push()
+					   dockerImage.push()
 				   }
 			   }
 		   }
+
 	   }
 }
 
