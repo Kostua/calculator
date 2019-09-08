@@ -70,7 +70,7 @@ pipeline {
 	   }
 	   stage("Deploy to staging"){
 		   steps {
-			   sh "docker run -d --rm -p 8765:8080 --name $BUILD_NUMBER $BUILD_NUMBER"
+			   sh "docker run -d --rm -p 8765:8080 --name $BUILD_NUMBER kostua/calculator:$BUILD_NUMBER"
 		   }
 	   }
 	   stage('Remove Unused docker image'){
