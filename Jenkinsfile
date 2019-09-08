@@ -68,11 +68,16 @@ pipeline {
 		   }
 
 	   }
+	   stage("Deploy to staging"){
+		   steps {
+			   sh "docker run -d --rm -p 8765:8080 --name $BUILD_NUMBER $BUILD_NUMBER"
+		   }
+	   }
 	   stage('Remove Unused docker image'){
 		   steps{
 			   sh "docker rmi $registry:$BUILD_NUMBER"
 		   }
 	   }
-}
+    }
 
 }
