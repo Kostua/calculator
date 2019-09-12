@@ -53,7 +53,7 @@ pipeline {
 			   echo 'Start to build docker image'
 
 			   script {
-				dockerImage  = docker.build registry + ":$BUILD_NUMBER" 
+				dockerImage  = docker.build registry + "calculator:latest" 
 			   }
 		   }
 	   }
@@ -70,7 +70,7 @@ pipeline {
 	   }
 	   stage("Deploy to staging"){
 		   steps {
-			   sh "docker run -d --rm -p 8765:8080 --name calculator kostua/calculator:$BUILD_NUMBER"
+			   sh "docker run -d --rm -p 8765:8080 --name calculator kostua/calculator:latest"
 		   }
 		   post{
 			   always {
@@ -80,7 +80,7 @@ pipeline {
 	   }
 	   stage('Remove Unused docker image'){
 		   steps{
-			   sh "docker rmi $registry:$BUILD_NUMBER"
+			   sh "docker rmi $registry:latest"
 		   }
 	   }
     }
