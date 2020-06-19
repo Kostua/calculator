@@ -1,0 +1,12 @@
+- name: Deploy Docker container from Docker Hub to EC2 instans 
+  hosts: localhost
+  connection: local
+  gather_facts: True
+
+  vars_files:
+    - group_vars/common.yml
+
+  roles:
+    - roles/securitygroups
+    - roles/ec2_keypair
+    - roles/ec2

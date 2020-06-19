@@ -3,6 +3,11 @@ pipeline {
 		maven 'maven 3.5.4'
 		jdk 'java_11'
 		}
+    environment {
+    registry = "kostua/calculator"
+    registryCredential = 'dockerhub'
+	dockerImage = ''
+	}
 	agent any
     triggers {
         pollSCM('H/15 * * * *')
@@ -43,8 +48,41 @@ pipeline {
 		}
 	   }
 
+	   stage("Docker build"){
+		   steps {
+			   echo 'Start to build docker image'
 
+			   script {
+				dockerImage  = docker.build registry + ":latest" 
+			   }
+		   }
+	   }
 
-}
+	   stage('Deploy Image'){
+		   steps{
+			   script{
+				   docker.withRegistry( '', registryCredential) {
+					   dockerImage.push()
+				   }
+			   }
+		   }
+
+	   }
+	   stage("Deploy to staging"){
+		   steps {
+			   sh "docker run -d --rm -p 8765:8080 --name calculator kostua/calculator:latest"
+		   }
+		   post{
+			   always {
+				   sh "docker stop calculator"
+			   }
+		   }
+	   }
+	   stage('Remove Unused docker image'){
+		   steps{
+			   sh "docker rmi $registry:latest"
+		   }
+	   }
+    }
 
 }
