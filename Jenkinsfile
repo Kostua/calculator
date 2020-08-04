@@ -1,9 +1,4 @@
 pipeline {
-	tools {}
-    environment {}
-	agent any
-    triggers {}
-
 
 	    stage("Checkout") {
 		steps {
