@@ -1,9 +1,10 @@
 package com.kostua.calculator;
-import com.kostua.calculator.api.CalculatorController;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
+import com.kostua.calculator.api.CalculatorController;
+
+import org.junit.jupiter.api.Test;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
