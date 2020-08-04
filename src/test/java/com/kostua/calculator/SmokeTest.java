@@ -1,4 +1,5 @@
 package com.kostua.calculator;
+import com.kostua.calculator.api.CalculatorController;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -11,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class SmokeTest {
 
 	@Autowired
-	private CalculatorApplication controller;
+	private CalculatorController controller;
 
 	@Test
 	public void contexLoads() throws Exception {
