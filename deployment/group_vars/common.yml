@@ -1,4 +1,0 @@
-environment_name: "calculator"
-ec2_region: "eu-west-1"
-instance_type: t2.micro
-image: ami-06358f49b5839867c
